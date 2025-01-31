@@ -1,0 +1,57 @@
+@use "../global/" as *;
+
+.breadcrumb {
+  &__list {
+    display: flex;
+    gap: rem(8);
+    font-size: rem(12);
+    font-weight: 400;
+    overflow-x: scroll;
+    white-space: pre;
+
+    @include mq("pc") {
+      justify-content: flex-end;
+      gap: rem(12);
+      font-size: rem(13);
+    }
+
+    & {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: rem(2);
+      color: var(--color-main);
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: rem(8);
+
+      @include mq("pc") {
+        gap: rem(12);
+      }
+
+      & + li {
+        &::before {
+          content: "";
+          display: block;
+          width: rem(7);
+          height: rem(12);
+          background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%228%22%20height%3D%2213%22%20viewBox%3D%220%200%208%2013%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M2.00023%2012.5L0.929688%2011.4295L5.85915%206.5L0.929688%201.57054L2.00023%200.5L8.00023%206.5L2.00023%2012.5Z%22%20fill%3D%22%23CBDCE0%22%2F%3E%3C%2Fsvg%3E");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
+      }
+    }
+  }
+}

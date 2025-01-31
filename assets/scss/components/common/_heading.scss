@@ -1,0 +1,9 @@
+@use "../global/" as *;
+
+.heading {
+  font-size: rem(96);
+
+  strong {
+    color: var(--color-main);
+  }
+}

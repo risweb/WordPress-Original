@@ -1,0 +1,29 @@
+@use "../global/" as *;
+
+.pic-sp {
+	margin-right: calc(-50vw + 50% + var(--scrollbar));
+	overflow-x: scroll;
+
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+		margin-right: calc(-50vw + 50% + rem(10));
+	}
+
+	@include mq("pc") {
+		margin-right: 0;
+		overflow: inherit;
+	}
+
+	img {
+		min-width: rem(840);
+		padding-right: per(24, 400);
+
+		@include mq("pc") {
+			min-width: auto;
+			padding-right: 0;
+		}
+	}
+
+	figcaption {
+		padding-right: per(24, 400);
+	}
+}

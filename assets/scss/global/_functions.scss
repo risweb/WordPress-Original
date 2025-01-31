@@ -1,0 +1,46 @@
+@use './variables' as *;
+@use "sass:math";
+
+$initBase: 1920;
+
+@function weight($type) {
+  @if ($type =="bold") {
+    @return 700;
+  }
+
+  @else if($type =="medium") {
+    @return 500;
+  }
+
+  @else if($type =="black") {
+    @return 900;
+  }
+}
+
+@function rem($value, $base: 16) {
+  @return unquote(math.div($value, $base) + "rem");
+}
+
+@function per($value, $base: $initBase) {
+  @return percentage(math.div($value, $base));
+}
+
+@function sf($value, $base: $initBase) {
+  @return unquote(math.div($value * 360, $base) +"px");
+}
+
+@function half($value) {
+  @return unquote(math.div($value, 2) +"px");
+}
+
+@function ls($value) {
+  @return unquote(math.div($value, 1000) +"em");
+}
+
+@function vw($value, $base: $initBase) {
+  @return unquote((math.div($value, $base) * 100) +"vw");
+}
+
+@function lh($fsize, $lineheight) {
+  @return math.div(round(math.div($lineheight, $fsize) * 10), 10);
+}

@@ -1,0 +1,14 @@
+@use './variables' as *;
+@use './functions' as *;
+
+@mixin mq($value){
+  @media #{map-get($mq, $value)}{
+    @content;
+  }
+}
+
+@mixin sp-inner () {
+}
+
+@mixin pc-inner () {
+}

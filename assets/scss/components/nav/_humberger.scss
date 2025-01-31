@@ -1,0 +1,123 @@
+@use "../../global/" as *;
+
+
+/*--------------------------------------------
+humberger
+---------------------------------------------*/
+.humberger {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  z-index: 1000;
+  width: rem(30);
+  height: rem(25);
+  margin-right: rem(-10);
+
+  @include mq("pc") {
+    width: rem(38);
+    margin-right: 0;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .humberger__line {
+        background-color: var(--color-main);
+      }
+
+      .humberger__line:before,
+      .humberger__line:after {
+        background-color: var(--color-main);
+      }
+    }
+  }
+}
+
+.humberger__line {
+  position: relative;
+  display: block;
+  width: rem(36);
+  height: rem(3);
+  background-color: #000;
+  transition: 0.3s ease-in;
+
+  @include mq("tab") {
+    width: rem(38);
+  }
+}
+
+.humberger__line:before,
+.humberger__line:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transition: inherit;
+  transition: 0.3s ease-in;
+}
+
+.humberger__line:before {
+  top: -9px;
+
+  @include mq("pc") {
+    top: -11px;
+  }
+}
+
+.humberger__line:after {
+  top: 9px;
+
+  @include mq("pc") {
+    top: 11px;
+  }
+}
+
+.humberger__text {
+  margin-top: rem(2);
+  transform: translate(20%);
+  transition: 0.4s cubic-bezier(0.28, 0.91, 1, 1);
+}
+
+// ACTIVE
+
+.humberger._active {
+  width: auto;
+
+  .humberger__line {
+    background-color: transparent;
+
+    &::before,
+    &::after {
+
+      @include mq("pc") {
+        background-color: #fff;
+      }
+    }
+  }
+
+  .humberger__line::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .humberger__line::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .humberger__text {
+    font-size: rem(15);
+    color: var(--color-white);
+    transform: translate(0%);
+
+
+    &::before {
+      @include mq("pc") {
+        content: "メニューを閉じる";
+        display: block;
+        width: 9em;
+      }
+    }
+  }
+}

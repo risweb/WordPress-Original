@@ -1,0 +1,115 @@
+@use "../global/" as *;
+
+.pagination {
+	position: relative;
+	margin-inline: auto;
+	max-width: calc(100% - per(48, 400));
+	padding-bottom: rem(60);
+	text-align: center;
+
+	@include mq("pc") {
+		padding: 0;
+	}
+
+	.nav-links {
+		display: flex;
+		justify-content: center;
+		gap: rem(10);
+	}
+
+	a {
+		color: var(--color-black);
+	}
+
+	.page-numbers {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: rem(38);
+		height: rem(40);
+		padding-top: rem(2);
+		border: 1px solid var(--color-main);
+		border-radius: 50%;
+		background-color: var(--color-white);
+		font-weight: 300;
+		line-height: 180%;
+		vertical-align: bottom;
+
+		@include mq("pc") {
+			color: var(--color-main);
+		}
+
+		&.current {
+			background-color: var(--color-main);
+			color: var(--color-white);
+		}
+
+		&.next,
+		&.prev {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			max-width: min(rem(166), 48%);
+			border-radius: rem(40);
+
+			@include mq("pc") {
+				position: relative;
+				width: rem(40);
+				border-radius: 50%;
+			}
+		}
+
+		&.next {
+			left: auto;
+			right: 0;
+		}
+	}
+
+	&__arrow {
+		display: flex;
+		align-items: center;
+		gap: rem(8);
+
+		&::before {
+			content: "";
+			display: inline-block;
+			width: rem(7);
+			height: rem(16);
+			margin-top: rem(-1);
+			background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%228%22%20height%3D%2212%22%20viewBox%3D%220%200%208%2012%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M6.46484%2012L0.464844%206L6.46484%200L7.53538%201.07054L2.60592%206L7.53538%2010.9295L6.46484%2012Z%22%20fill%3D%22%23222222%22%2F%3E%3C%2Fsvg%3E');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+
+		}
+
+		&::after {
+			content: "前に戻る";
+
+			@include mq("pc") {
+				display: none;
+			}
+		}
+
+		&._next {
+			flex-direction: row-reverse;
+
+			@include mq("pc") {
+				flex-direction: row;
+			}
+
+			&::before {
+				transform: rotate(180deg);
+			}
+
+			&::after {
+				content: "次に進む";
+
+				@include mq("pc") {
+					display: none;
+				}
+			}
+		}
+	}
+}

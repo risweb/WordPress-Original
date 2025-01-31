@@ -1,0 +1,17 @@
+$breakPointList: 375px, 768px, 1050px, 1250px, 1280px;
+
+$img-dir: "/wp-content/themes/xxxx/assets/img/";
+$font-dir: "/fonts/";
+
+$sp-base-width: 375;
+$pc-base-width: 1366;
+$pc-content-base-width: 1080;
+$pc-content-body-width: 810;
+
+$mq: (
+  "sp-min": "screen and (max-width: #{nth($breakPointList, 1) - 1})",
+  "sp": "screen and (max-width: #{nth($breakPointList, 2) - 1})",
+  "tab": "print,screen and (min-width: #{nth($breakPointList, 2)})",
+  "pc": "print,screen and (min-width: #{nth($breakPointList, 3)})",
+  "pc-min": "print,screen and (min-width: #{nth($breakPointList, 3)})",
+) !default;

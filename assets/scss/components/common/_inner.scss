@@ -1,0 +1,23 @@
+@use "../global/" as *;
+
+$inner-space: 80;
+
+.inner {
+  max-width: calc(rem(1400) + rem(80)); // 左右padding分足す
+  margin-inline: auto;
+  padding-left: per(24, 400);
+  padding-right: per(24, 400);
+
+  @include mq("pc") {
+    padding-left: rem(40);
+    padding-right: rem(40);
+  }
+
+  &._short {
+    max-width: calc(rem(1120) + rem(80)); // 左右padding分足す
+  }
+
+  &._wide {
+    max-width: calc(rem(1680) + rem(80)); // 左右padding分足す
+  }
+}

@@ -1,0 +1,15 @@
+@use "../../global/" as *;
+
+.sub-menu {
+  display: none;
+
+  a {
+    padding-top: rem(10);
+    padding-bottom: rem(10);
+
+    @include mq("pc") {
+      padding-top: rem(15);
+      padding-bottom: rem(15);
+    }
+  }
+}
